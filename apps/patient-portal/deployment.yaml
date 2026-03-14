@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: patient-portal
-        image: nginx:BROKEN
+        image: nginx:1.25
         ports:
         - containerPort: 80
         resources:
