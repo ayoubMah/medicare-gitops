@@ -4,7 +4,7 @@ namespace: medicare-dev
 
 image:
   repository: nginx
-  tag: "1.25"
+  tag: "1.26"
   pullPolicy: IfNotPresent
 
 service:
