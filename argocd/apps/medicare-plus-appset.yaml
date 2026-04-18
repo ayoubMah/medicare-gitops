@@ -9,12 +9,19 @@ spec:
         elements:
           - env: dev
             namespace: medicare-dev
+            valuesFile: values.yaml
           - env: staging
             namespace: medicare-staging
             valuesFile: ../values-staging.yaml
           - env: prod
             namespace: medicare-prod
             valuesFile: ../values-prod.yaml
+
+          # added this 
+
+          - env: pre-prod
+            namespace: medicare-pre-prod
+            valuesFile: ../values-staging.yaml
   template:
     metadata:
       name: "medicare-plus-{{env}}"
