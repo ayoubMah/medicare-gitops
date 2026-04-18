@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: medicare-plus
+  namespace: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - env: dev
+            namespace: medicare-dev
+          - env: staging
+            namespace: medicare-staging
+            valuesFile: ../values-staging.yaml
+          - env: prod
+            namespace: medicare-prod
+            valuesFile: ../values-prod.yaml
+  template:
+    metadata:
+      name: "medicare-plus-{{env}}"
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/ayoubMah/medicare-gitops.git
+        targetRevision: week-08
+        path: helm-charts/medicare-plus
+        helm:
+          valueFiles:
+          - "{{valuesFile}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: "{{namespace}}"
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true

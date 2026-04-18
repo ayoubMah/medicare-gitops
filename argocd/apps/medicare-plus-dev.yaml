@@ -9,6 +9,7 @@ spec:
     repoURL: https://github.com/ayoubMah/medicare-gitops.git
     targetRevision: week-08
     path: helm-charts/medicare-plus
+    helm: {}
   destination:
     server: https://kubernetes.default.svc
     namespace: medicare-dev
