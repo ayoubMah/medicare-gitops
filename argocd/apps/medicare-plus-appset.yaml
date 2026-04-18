@@ -16,9 +16,6 @@ spec:
           - env: prod
             namespace: medicare-prod
             valuesFile: ../values-prod.yaml
-
-          # added this 
-
           - env: pre-prod
             namespace: medicare-pre-prod
             valuesFile: ../values-staging.yaml
